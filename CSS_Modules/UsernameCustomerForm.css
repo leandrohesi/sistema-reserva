@@ -1,0 +1,53 @@
+body{
+    background:linear-gradient(to right ,  lightblue , lightgray);
+    height: 100%;
+    width: 100%;
+    
+}
+.registration_form
+{
+outline: none;
+background-color:white;
+border: 1px solid rgb(189, 199, 216);
+border-radius:25px;
+font-family:Helvetica, Arial, sans-serif;
+font-size:18px;
+font-weight:400;
+outline-color:rgb(77, 144, 254);
+padding-bottom:8px;
+padding-top:8px;
+padding-left:10px;
+padding-right:10px;
+margin:6px;
+}
+#button{
+    position: relative;
+    margin-left: 50%;
+    background: whitesmoke;
+    border:  1px solid rgb(113, 216, 250);
+    border-top-left-radius: 10% 50%;
+    border-bottom-left-radius: 10% 50%;
+    border-top-right-radius: 10% 50%;
+    border-bottom-right-radius: 10% 50%;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+#button:hover{
+    cursor: pointer;
+    background: lightblue;
+    color: #f8f8f8;
+    transition: 1s;
+}
+#Error{
+  background:silver;
+  width: 20%; 
+  position: absolute;
+  left: 60%;
+  top : 15%;
+  border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-top-right-radius: 25px;
+
+}

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+     .Info{
+         position: relative;
+         margin-left:1000px;
+         margin-top: -180px;
+     }
+     .hotel{
+        position: relative;
+        list-style-type: none;
+        margin-left: 920px;  
+        margin-top: 220px
+      }
+      #hotelinfo{
+        margin-left: 650px;
+        margin-top: -300px;
+      }
+       .mange::before{
+       content: "mange";
+       color: white;
+       text-align: center;
+      }
+       .mange{
+         outline: none;
+          content: "Block";
+          background: black;
+          color: white;
+          border-radius: 15px;
+          border: 1px black solid;
+          margin-left: 5px
+      }
+       .hotelname{
+          font-size: 30px;
+          font-weight: bold;
+      }
+       .rate{
+          font-size: 15px;
+          font-weight: bold;
+      }
+      #Location{
+        font-size: 20px;
+        }
+        .Email{
+          
+        }
+       .question{
+          width: 90px;
+          margin-top: -15px;
+          margin-left: 250px;
+      }
+      
+      #search{
+          position: fixed;
+          left: 1100px;
+          top: 100px;
+      }
+      #hotels{
+          margin-left: -900px;
+      }
+      #yy{
+          position: absolute;
+          top: 180px;
+          left: 100px;
+      }
+      
+    </style>
+ 
+</head>
+<body>
+        <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>                        
+                    </button>
+                    <a class="navbar-brand" href="#">Booking</a>
+                  </div>
+                  <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class       ="nav navbar-nav">
+                      <li class="active"><a href="#">Home</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right" id="notification">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{hotelOwner.name}}</a></li>
+                      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+
+            </div>
+            
+        </form>
+    </div>
+    <div>
+            <div id="hotels">
+                @each(hotel in hotelOwnerHotels)
+                <ul>
+                <li class="hotel" id="hotel">
+                        <img src= "{{hotel.image}}" alt="{{hotel.image}}" width="600" height="300">
+                        <div id="hotelinfo">
+                        <p class="hotelname">{{hotel.hotel_name}} </p>
+                        <p class="Location" id="Location">Location : {{hotel.hotel_location}}</p>
+                        <p class="Email">Email : {{hotel.email}}</p>
+                        <p class="phone">Phone : {{hotel.phone}}</p>
+                        <p class="rate">Hotel rate : {{hotel.stars}} Stars</p>
+                        <button class="mange" id="mange"></button>
+                       
+                        </li>
+                    </ul>
+                @endeach
+                  </div>
+      <h2 id="yy">Owner's Hotels</h2>
+
+              <div id="search">
+              <form method="POST" action="/add_new_hotel/{{hotelOwner.username}}" enctype="multipart/form-data">
+            <div> 
+                <h2>Add hotel</h2>
+                   <input type="text" placeholder="Hotel name" name = "hotel_name">
+                   <div>
+                    <input type="text" placeholder="Location" name="hotel_location">
+                   </div>
+
+                   <div>
+                    <input type="text" placeholder="Hotel_Manger_Username" name="hotel_username">
+                   </div>
+
+                   <div>
+                    <input type="text" placeholder="Hotel_Manger_password" name="hotel_password">
+                   </div>
+
+                 <div>
+                     <input type="text" placeholder="Telephone" name="telephone">
+                 </div>
+                 <div>
+                     <input type="text"placeholder="Email" name="email">
+                 </div>
+                 <div>
+                        <input type="text"placeholder="Postal code" name="postal_code">
+                    </div><br>
+                  
+         <div>
+                <input type="text"placeholder="single room number" name="singleRoom"><br>
+                <input type="text"placeholder="double room number" name="doubleRoom"><br>
+                <input type="file" name="image"><br>
+
+                <input type="submit" value="Add hotel" id="add" required>
+            </form>
+            </div>
+        </div>
+
+            <script>
+                
+                var Singlecount    = 0;
+                var Doublecount    = 0;
+                var Triplecount    = 0;
+                var Quadrablecount = 0;
+                var Premiumcount   = 0;
+                
+                document.getElementById("addsingle").addEventListener("click",addSingle);
+                document.getElementById("removesingle").addEventListener("click",removeSingle);
+
+                document.getElementById("adddouble").addEventListener("click",addDouble);
+                document.getElementById("removedouble").addEventListener("click",removeDouble);
+
+                document.getElementById("addtriple").addEventListener("click",addTriple);
+                document.getElementById("removetriple").addEventListener("click",removeTriple);
+
+                document.getElementById("adddquadrable").addEventListener("click",addQuadrable);
+                document.getElementById("removequadrable").addEventListener("click",removeQuadrable);
+
+                document.getElementById("addpremium").addEventListener("click",addPremium);
+                document.getElementById("removepremium").addEventListener("click",removePremium);
+
+
+
+
+
+                function addSingle(){
+                    Singlecount ++;
+                    document.getElementById("s").innerHTML=Singlecount;
+                }
+                function removeSingle(){
+                    Singlecount --;
+                    document.getElementById("s").innerHTML=Singlecount;
+                    if(Singlecount<=0){
+                        Singlecount=0;
+                        document.getElementById("s").innerHTML=0;
+                    }
+                }
+
+                      function addDouble(){
+                    Doublecount ++;
+                    document.getElementById("d").innerHTML=Doublecount;
+                }
+                function removeDouble(){
+                    Doublecount --;
+                    document.getElementById("d").innerHTML=Doublecount;
+                    if(Doublecount<=0){
+                        Doublecount=0;
+                        document.getElementById("d").innerHTML=0;
+                    }
+                }
+
+      function addTriple(){
+                    Triplecount ++;
+                    document.getElementById("t").innerHTML=Triplecount;
+                }
+                function removeTriple(){
+                    Triplecount --;
+                    document.getElementById("t").innerHTML=Triplecount;
+                    if(Triplecount<=0){
+                        Triplecount=0;
+                        document.getElementById("t").innerHTML=0;
+                    }
+                }
+
+ function addQuadrable(){
+                    Quadrablecount ++;
+                    document.getElementById("q").innerHTML=Quadrablecount;
+                }
+                function removeQuadrable(){
+                    Quadrablecount --;
+                    document.getElementById("q").innerHTML=Quadrablecount;
+                    if(Quadrablecount<=0){
+                        Quadrablecount=0;
+                        document.getElementById("q").innerHTML=0;
+                    }
+                }
+
+ function addPremium(){
+                    Premiumcount ++;
+                    document.getElementById("p").innerHTML=Premiumcount;
+                }
+                function removePremium(){
+                    Premiumcount --;
+                    document.getElementById("p").innerHTML=Premiumcount;
+                    if(Premiumcount<=0){
+                        Premiumcount=0;
+                        document.getElementById("p").innerHTML=0;
+                    }
+                }
+
+            </script>
+
+</body>
+</html>

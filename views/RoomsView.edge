@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="" />
+    <script src=""></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <style>
+   #searchBar{
+       height: 320px;
+       width: 200px;
+       border: lightblue;
+       background: lightblue;
+       margin-left: 2px
+   }
+   #contain{
+       margin-left: 9px;
+   }
+   ul li.hotel{
+        position: relative;
+        border:solid 1px black;
+        list-style-type: none;
+        width: 350px;
+        height: 350px;
+      }
+      
+      ul li .hotelname{
+          font-size: 30px;
+          font-weight: bold;
+      }
+      ul li .rate{
+          font-size: 15px;
+          font-weight: bold;
+      }
+      ul li .reserve::before{
+       content: "Reserve";
+       color: white;
+       text-align: center;
+      }
+      ul li .reserve{
+          
+          background: black;
+          color: white;
+          border-radius: 15px;
+          border: 1px black solid;
+          margin-left: 270px
+      }
+     
+      #container{
+            margin-left: 500px;
+            margin-top: -10px;
+      }
+     #notification{
+         width: 500px;
+         margin-left: 500px;
+         margin-top: -300px;
+     }
+     #canel{
+         margin-left: 40px;
+         color: white;
+         border-radius: 20px;
+         background: black;
+         border: 1px black solid;
+     }
+     #countdowntimer{
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    color: black;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    margin-left: 3px;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  margin-top: -210px;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+   </style>
+</head>
+<body>
+        <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Booking</a>
+                  </div>
+                  <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                      <li class="active"><a href="#">Home</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+              <div id="searchBar">
+                  <div id="contain">
+                  <h3 style="font-weight: bold">search for hotel</h3><br>
+                  <label for="">search</label>
+                  <input type="search" id="search"><br><br>
+                  <label for="">Room number</label>
+                  <input type="text" id="roomNumbers"><br><br>
+                  <label for="">Room type</label>
+                  <input type="text" id="type"><br><br>
+                  <input type="button" id="Search" value="Search">
+              </div>
+            </div>
+            <div class="alert alert-success" id="notification">
+                    <strong>Are you sure you want reserve the hotel ?<span id="countdowntimer"></span></strong>
+                    <input type="button" id="canel" value="Canel">
+                  </div>
+        
+            <div id="container">
+                     <h2 id="result" style="font-weight: bold;margin-left:90px">Search result</h2>
+              <div id="hotelContainer">
+                    @if(selectedRooms.length>0)    
+                      <ul>
+                      @each(selectedRoom in selectedRooms)     
+                      <li class="hotel" id="hotel">
+                                    <div class="dropdown">
+                                            <img src={{selectedRoom.image}} alt="hotle imag" width="350" height="200">
+                                            <div class="dropdown-content">
+                                            <img src={{selectedRoom.image} alt="Cinque Terre" width="550" height="350">
+                                            </div>
+                                          </div>
+                                  <form method="POST" action="/reserve">
+                                <p class="hotelName" name ="hotel_name">{{selectedRoom.hotel_name}}</p>
+                                <p class="hotelLocation" name="hotel_location">{{selectedRoom.hotel_location}}</p>
+                                <p class="stars" name="stars">{{selectedRoom.stars}}</p>
+                                <p class="telephone" name="telephone">{{selectedRoom.telephone}}</p>
+                                <p class="email" name="email">{{selectedRoom.email}}</p>
+                                <p class="postal_code" name=" postal_code">{{selectedRoom.postal_code}}</p>
+                                <p class="room type" name="room_type">{{selectedRoom.dataValues.type}}</p>                   
+                                <p class="room number" name="room_number">{{selectedRoom.dataValues.room_number}}</p>
+                                <p class="price" name="price">{{selectedRoom.dataValues.price}}</p>
+                                <p class="check_in_date" name="check_in_date" style="display:none">{{selectedRoom.dataValues.check_in_date}}</p>
+                                <p class="check_out_date" name="check_out_date" style="display:none">{{selectedRoom.dataValues.check_out_date}}</p>
+                                <p class="customer_username" name="customer_username" style="display:none">{{selectedRoom.dataValues.customer_username}}</p>
+                                <input type="hidden" name ="customer_username" value="{{selectedRoom.dataValues.customer_username}}"/>
+                                <input type="hidden" name ="room_number" value="{{selectedRoom.dataValues.room_number}}"/>
+                                <input type="hidden" name ="hotel_name" value="{{selectedRoom.hotel_name}}"/>
+                                <input type="hidden" name ="hotel_location" value="{{selectedRoom.hotel_location}}"/>
+                                <input type="hidden" name ="check_in_date" value="{{check_in_date}}"/>
+                                <input type="hidden" name ="check_out_date" value="{{check_out_date}}"/>
+                                
+                                <button class="reserve" id="reserve" type="submit"></button>
+                                </form>
+                            </li>
+                        @endeach
+                             </ul>
+                       @endif
+              </div>
+            </div>
+<script>
+    document.getElementById("notification").style.display="none";
+    document.getElementById("reserve").addEventListener("click",showNotification);
+    document.getElementById("canel").addEventListener("click",canel);
+    
+    var timeleft = 31; 
+    function showNotification(){
+        document.getElementById("notification").style.display="block";
+        timeleft = 31 
+           var Timer = setInterval(function(){
+             timeleft--;
+                 document.getElementById("countdowntimer").textContent = timeleft;
+                  if(timeleft <= 0)
+                    clearInterval(Timer);
+                       },1000);    
+                     }
+    function canel(){
+        document.getElementById("notification").style.display="none";
+             timeleft =0;
+                 document.getElementById("countdowntimer").textContent = timeleft;
+                     }
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{
+  "name": "hotel_reservation_system",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oswidan97/HotelManagemenetSystem.git"
+  },
+  "author": "DAM3A",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oswidan97/HotelManagemenetSystem/issues"
+  },
+  "homepage": "https://github.com/oswidan97/HotelManagemenetSystem#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.2",
+    "connect-flash": "^0.1.1",
+    "connect-session-sequelize": "^6.0.0",
+    "express": "^4.16.4",
+    "express-edge": "^1.0.0",
+    "express-fileupload": "^1.0.0",
+    "express-session": "^1.15.6",
+    "heroku": "^7.19.4",
+    "mysql2": "^1.6.4",
+    "nodemon": "^1.18.9",
+    "path": "^0.12.7",
+    "pg": "^7.7.1",
+    "sequelize": "^4.42.0",
+    "sequelize-auto-migrations": "^1.0.2"
+  },
+  "devDependencies": {},
+  "description": ""
+}

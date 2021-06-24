@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/broker.css" />
+    <script src="main.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+     .badge{
+      position: relative;
+      margin-left: 60%;
+      margin-top: -60%;
+    }
+   
+         </style>
+</head>
+<body>
+    <header>
+            <span class="glyphicon glyphicon-user" style="position: absolute; font-size:50px; margin-left:20px"></span>
+            <span style="position: absolute;margin-left:70px;margin-top:10px; font-size: 30px; font-weight: bold;">Broker</span>
+            <span class="fa-stack fa-2x"style="position: relative;margin-left:85%;cursor: pointer;" id="noti">
+                    <i class="fa fa-circle fa-stack-2x" ></i>
+                    <i class="fa fa-bell fa-stack-1x fa-inverse"></i>
+                    <span class="badge" id="count">0</span>
+                  </span>
+                  <a href="UserCustomerSignin.html"><span class="glyphicon glyphicon-log-out" style="position: absolute; font-size:50px; margin-left:3%;cursor: pointer;color: #000;"></span></a>
+    </header>
+        <div>
+            <ul id="notification"></ul>
+        </div>
+        <button id="add">add</button>
+        
+        <div>
+            <ul class="hotel" id="hotel">   
+                <li class="hotelName" id="hotelName">
+                  <button class="block">block</button>
+                </li>
+            </ul>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    
+        <script src="broker.js"></script>
+</body>
+</html>

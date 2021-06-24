@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/UsernameCustomerForm.css" />
+    
+</head>
+<body>
+    <h2>Welcome To Our Booking Site</h2>
+    <div>
+        <form  method="POST" onsubmit="return validation()">
+        <!--for customer Or owner-->
+        <div style="font-weight: bold;">
+            <input type="radio" name="select"  class="registration_form" id="cust"  required>Customer
+            <input type="radio" name="select"  class="registration_form" id="own"  required>Owner<br><br>
+        </div>
+        <!--for user inputs-->
+            <input type="text" placeholder="Customer Or Owner" class="registration_form" id="uname" required><br><br>
+            <input type="text" placeholder="First name" class="registration_form" id="fname" required>
+            <input type="text" placeholder="Last name" class="registration_form"  id="lname" required><br><br>
+            <input type="text" placeholder="SSN" class="registration_form"  id="ssn" required><br><br>
+            <input type="text" placeholder="Email" class="registration_form"  id="email" required><br><br>
+            <input type="text" placeholder="Phone number" class="registration_form"  id="phone" required><br><br>
+            <input type="password" placeholder="Password" class="registration_form"  id="pass" required><br><br>
+            <input type="password" placeholder="Confirm Password" class="registration_form"  id="cpass" required><br><br>
+            <input type="text" placeholder="xxxx-xxxx-xxxx-xxxx" class="registration_form"  id="credit" required><br><br>
+            <input type="text" placeholder="Hotel name" style="display: none;" class="registration_form" id="hotel" ><br>
+            <input type="submit" value="SignUp" id="button"><br><br>
+            <p style="position:relative; margin-left:90px">if you are member?<br><a href="UserCustomerSignin.html">singin</a> </p>
+        </form>
+        </div>
+         <!--for Error entering-->
+            <div id="Error">
+                <h3 id="cs"></h3>
+                <h3 id="fn"></h3>
+                <h3 id="ln"></h3>
+                <h3 id="em"></h3>
+                <h3 id="ph"></h3>
+                <h3 id="pa"></h3>
+                <h3 id="pa1"></h3>
+                <h3 id="cc"></h3>
+                <h3></h3>
+            </div>
+    <script src="UserCustomerForm.js"></script>
+</body>
+</html>

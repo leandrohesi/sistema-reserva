@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+      .container{
+          margin-left: -300px;
+      }
+      .container2{
+          position: relative;
+          left: -335px;
+      }
+      #herf{
+       margin-left:1200px; 
+     }
+  
+     
+    </style>
+  
+</head>
+<body>
+
+        <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>                        
+                    </button>
+                    <a class="navbar-brand" href="#">Booking</a>
+                  </div>
+                  <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class       ="nav navbar-nav">
+                      <li class="active"><a href="#">Home</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right" id="notification">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{hotelOwner.name}}</a></li>
+                      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+              <a href="#a" id="herf">Block Guests</a>
+
+              <h2 class="CInfo">Guest Info</h2>
+              <div class="container">
+  <div class="row" id="">
+      <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+       <div class="well profile">
+        
+                  <h2>{{customer.name}}</h2>
+                  <p><strong>Email : {{customer.email}} </strong> </p>
+                  <p><strong>phone : {{customer.phone}} </p>
+                    <p><strong>SSN : {{customer.ssn}} </p>
+                        <div>
+                        <button id="in">Check-in</button>
+                        <button id="out">Check-out</button>
+                    </div>
+    
+              </div>
+          </div>
+         </div>
+        </div>
+
+        <hr style="width: 500px;">
+
+        <a Name="a"><h2 class="CInfo">Block Guests</h2></a>
+        <div class="container2">
+<div class="row" id="">
+<div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+ <div class="well profile">
+  
+            <h2>{{customer.name}}</h2>
+            <p><strong>Email : {{customer.email}} </strong> </p>
+            <p><strong>phone : {{customer.phone}} </p>
+              <p><strong>SSN : {{customer.ssn}} </p>
+                  <div>
+                  <button id="block">Block</button>
+              </div>
+
+        </div>
+    </div>
+   </div>
+  </div>
+
+
+</body>
+</html>

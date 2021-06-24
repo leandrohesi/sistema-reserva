@@ -1,0 +1,118 @@
+body{
+   
+ background:linear-gradient(to right ,  lightblue , lightgray);
+ height: 100%;
+ position: abslute;
+ margin-left: 20%;
+ margin-top: 20%;
+}
+header{
+    position: relative;
+    background:linear-gradient(to right , lightgray  , lightblue);
+    height: 6%;
+    width: 100%;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border: 1px solid gray;   
+}
+ul li.notify{
+    position: relative;
+    width: 350px;
+    height: 35px;
+    background: white;
+    list-style-type: none;
+    padding-top: 7px;
+    font-weight: bold;
+    margin-left: 73.5%;
+    border-radius: 25px;
+    padding-left: 5px;
+    border: 1px solid black;
+}
+ul li .remove::before{
+    content: "X";
+    color: white;
+    text-align: center;
+}
+ul li .remove{
+    position: absolute;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    line-height:25px;
+    text-align: center;
+    font-weight: bold;
+    background: red;
+    border:1px solid red;
+    font-size: 14px;
+    margin-left: 73%;
+    }
+    
+  .remove:hover{
+      color: black;
+      cursor: pointer;
+  }
+    ul li .accept::before{
+        content: "✔";
+        color: white;
+        text-align: center;
+    }
+    ul li .accept{
+        position: absolute;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        line-height:25px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 14px;
+        margin-left: 59%;
+        border: 1px solid blue;
+        background: blue;
+        color: aliceblue;
+        }
+        .accept:hover{
+            color: black;
+            cursor: pointer;
+        }
+    ul li .remove::before{
+    content: "X";
+    color: white;
+    text-align: center;
+}
+
+ul li .line::before{
+    content: "|";
+    color: lightgray;
+}
+
+ul li .line{
+    content: "|";
+    position: absolute;
+    margin-left: 69%;
+    margin-top: -4px;
+    font-size: 20px;
+    color: lightgray;
+}
+ul li.hotelName{
+    position: fixed;
+    width: 350px;
+    height: 35px;
+    background: white;
+    list-style-type: none;
+    padding-top: 7px;
+    font-weight: bold;  
+    border-radius: 25px;
+    padding-left: 5px;
+    border: 1px solid black;
+}
+ul li .block{
+    position: absolute;
+    border-radius: 25px;
+    background: red;
+    border: 1px solid red;
+    margin-left: 83%;
+    margin-top: -.5%;
+}
+

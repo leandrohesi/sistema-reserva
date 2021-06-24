@@ -1,0 +1,135 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="" />
+    <script src=""></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+      .reject{
+          background: black;
+          color: white;
+          border-radius: 15px;
+          border: 1px black solid;
+      }
+      .accept{
+          background: black;
+          color: white;
+          border-radius: 15px;
+          border: 1px black solid;
+      }
+      .information{
+          font-weight: bold;
+      }
+
+      .RH{
+          margin-top:200px;
+          margin-left: 500px;
+      }
+
+     .H{
+         position: absolute;
+         margin-left: 950px;
+         margin-top: -40px;
+     }
+     #container{
+       width:300  px;
+       margin-left:950px;
+     }
+     #search{
+     }
+     #h{
+       margin-top: -230px;
+       margin-left: 100px;
+     }
+     .hotelname{
+          font-size: 30px;
+          font-weight: bold;
+      }
+      .rate{
+          font-size: 15px;
+          font-weight: bold;
+      }
+      #Location{
+        font-size: 20px;
+        }
+        .email{
+        font-weight: bold;
+        }
+       .phone{
+          font-weight: bold;
+        }
+      
+
+  </style>
+
+</head>
+<body>
+        <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Botato Booking</a>
+                  </div>
+                  <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                      <li class="active"><a href="#">Home</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right" id="reserve">
+                            
+                      <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{customer.name}}</a></li>
+                      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+
+              <div id="container">
+                <form class="" action="/customer_search" method="post">
+                  <label>Search for hotel</label>
+                   <input id="search"type="search"name="hotel_name" placeholder="Search for hotel"><br><br>
+
+                   <label>Location</label>
+                   <input id="location"type="text"name="hotel_location" placeholder=" hotel location"><br><br>
+
+                   <label>check in</label>
+                   <input type="date" data-date-inline-picker="true" name="check_in_date" required/><br><br>
+
+                   <label>check out</label>
+                   <input type="date" data-date-inline-picker="true" name="check_out_date" required/><br><br>
+
+                  <label>Enter Room Type</label>
+                  <select class="" name="type">
+                         <option value="Single">Single</option>
+                         <option value="Double">Double</option>
+                         <option value="Triple">Triple</option>
+                         <option value="Quadrable">Quadrable</option>
+                  </select>
+                  <input type="submit" name="" value="search" >
+                  </form>
+                </div>/
+              <div id="h">
+                  <h2 class="Info">Previous reservation</h2>
+                    
+                      <div class="hotel" id="hotel">
+                          <div id="hotelinfo">
+                            @each(reservation in reservations)
+                          <p class="hotelname">{{reservation.hotel_name}}</p>
+                          <p class="Location" id="Location">Location : {{reservation.hotel_location}}</p>
+                          <p class="Check_in">Check_in : {{reservation.check_in_date}}</p>
+                          <p class="Check_out">Check_out : {{reservation.check_out_date}}</p>
+                          <span class="fa fa-star"></span>
+                          <hr style="width: 400px; margin-left: -10px">
+                          @endeach
+                    </div>
+            
+</body>
+</html>

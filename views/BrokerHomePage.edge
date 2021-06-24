@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="" />
+    <script src=""></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <style>
+      .reject{
+          background: black;
+          color: white;
+          border-radius: 15px;
+          border: 1px black solid;
+      }
+      .accept{
+          background: black;
+          color: white;
+          border-radius: 15px;
+          border: 1px black solid;
+      }
+      .information{
+          font-weight: bold;
+      }
+      .hotel{
+        position: relative;
+        list-style-type: none;
+        margin-left:20px;  
+        margin-top: 300px;
+      }
+      #hotelinfo{
+        margin-left: 650px;
+        margin-top: -300px;
+      }
+       .block::before{
+       content: "Block";
+       color: white;
+       text-align: center;
+      }
+       .block{
+         outline: none;
+          content: "Block";
+          background: black;
+          color: white;
+          border-radius: 15px;
+          border: 1px black solid;
+          margin-left: 5px
+      }
+       .hotelname{
+          font-size: 30px;
+          font-weight: bold;
+      }
+       .rate{
+          font-size: 15px;
+          font-weight: bold;
+      }
+      #Location{
+        font-size: 20px;
+        }
+        .Email{
+          
+        }
+       .question{
+          width: 90px;
+          margin-top: -15px;
+          margin-left: 250px;
+      }
+      .Info{
+          margin-left: 100px
+      }
+      .customer{
+          margin-top:-415px;
+          margin-left:800px;
+      }
+      .User{
+        position: relative;
+        border:solid 1px black;
+        list-style-type: none;
+        width: 400px;
+       height: 150px;
+       background: black;
+       color: white;
+      }
+       .uname{
+        font-weight: bold;
+      }
+       .fname{
+        font-weight: bold;
+      }
+       .lname{
+        font-weight: bold;
+        }
+       .email{
+        font-weight: bold;
+        }
+       .phone{
+          font-weight: bold;
+        }
+     .CInfo{
+         position: absolute;
+         margin-left: 100px;
+         margin-top: 10px;
+     }
+     .container{
+       position: relative;
+       width:1200px;
+       margin-left:-220px;
+       margin-top: 80px;
+     }
+     #line{
+       margin-top: 200px;
+       width: 900px;
+     }
+     #herf{
+       margin-left:1200px; 
+     }
+  </style>
+
+</head>
+<body>
+        <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Booking</a>
+                  </div>
+                  <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                      <li class="active"><a href="#">Home</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right" id="notification">
+                            <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                            <label>Notification</label>
+                                    <span class="badge" id="count">{{unapprovedHotels.count}}</span>
+                                    <span class="caret"></span></a>
+                                    <ul class="dropdown-menu"style="width: 330px;">
+                                      @each(hotel in unapprovedHotels.rows)
+                                      <div style="height: 40px;">
+                                      <span class="information"> want to add {{hotel.hotel_name}} hotel</span>
+                                      <form method="GET" action="/approveHotel/{{hotel.hotel_name}}/{{hotel.hotel_location}}">
+                                      <input style="position: absolute; margin-left:200px; margin-top: -20px" type="submit" value="Accept" class="accept" onclick="approve('{{hotel.hotel_name}}', '{{hotel.hotel_location}}')">
+                                       </form>
+                                    <form action="/disapproveHotel/{{hotel.hotel_name}}/{{hotel.hotel_location}}" method="GET">
+                                      <input style="position: absolute; margin-left:260px;margin-top: -20px;" type="submit" value="Reject" class="reject" onclick="disapprove('{{hotel.hotel_name}}', '{{hotel.hotel_location}}')">
+                                    </form>
+                                    </div>
+                                  
+                                      @endeach
+                                     </ul>
+                                  </li>
+                      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Broker</a></li>
+                      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+              <a href="#a" id="herf">Customer Info</a>
+              <div>
+                  <h2 class="Info">Hotel Info</h2>
+                  @each(hotel in approvedHotels)
+                      <div class="hotel" id="hotel">  
+                        <img src= "{{hotel.image}}" alt="{{hotel.image}}" width="600" height="300">
+                          <div id="hotelinfo">
+                          <p class="hotelname">{{hotel.hotel_name}}</p>
+                          <p class="Location" id="Location">Location : {{hotel.hotel_name}}</p>
+                          <p class="Email">Email : {{hotel.hotel_name}}</p>
+                          <p class="phone">Phone : {{hotel.hotel_name}}</p>
+                          <p class="rate">Hotel rate : {{hotel.stars}} Stars</p>
+                          <button class="block" id="block"></button>
+                          
+                    </div>
+                    @endeach
+                    <hr id="line">
+              </div>
+                </div>
+                <a Name="a"><h2 class="CInfo">Customer Info</h2></a>
+                <div class="container">
+	<div class="row" id="">
+		<div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+    	 <div class="well profile">
+          @each(customer in customers)
+                    <h2>{{customer.name}}</h2>
+                    <p><strong>Email : {{customer.email}} </strong> </p>
+                    <p><strong>phone : {{customer.telephone}} </p>
+                      <p><strong>SSN : {{customer.ssn}} </p>
+                    
+          @endeach
+                </div>
+            </div>
+    	   </div>
+		  </div>
+  
+      <script>
+            var count = document.getElementById("count");
+            document.getElementById("notification").addEventListener("click", function (){
+                count.innerHTML=0;});
+                document.getElementById("block").addEventListener("click",function(){
+                      document.getElementById("block").style.content="unblock";
+                })
+
+              function approve(hotel_name, hotel_location){
+                console.log("tttttttttttttttttttttttttttttttt")
+                console.log(hotel_name + " " + hotel_location)
+                         var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {}
+                         };
+                           xhttp.open("GET", "/approveHotel/" + hotel_name + "/" + hotel_location, true);
+                              xhttp.send();
+              }
+      </script>
+
+</body>
+</html>

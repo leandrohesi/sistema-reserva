@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/UsernameCustomerForm.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+    #c{
+        margin-left: 300px;
+        border: 1px solid black;
+        width:700px;
+        background: lightgrey;
+        border-bottom-left-radius: 25% 50%;
+        border-top-left-radius: 25% 50%;
+        border-bottom-right-radius: 25% 50%;
+        border-top-right-radius: 25% 50%;
+    }
+    #a{
+        margin-left: 300px;
+    }
+    </style>
+</head>
+<body>
+    
+        <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>                        
+                    </button>
+                    <a class="navbar-brand" href="#">Booking</a>
+                  </div>
+                  <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class       ="nav navbar-nav">
+                      <li class="active"><a href="#">Home</a></li>
+                    </ul>
+                    </div>
+                </div>
+              </nav>
+       
+    
+    <div>
+        <div id="Error">
+            <h3 id="cs"></h3>
+            <h3 id="fn"></h3>
+            <h3 id="ln"></h3>
+            <h3 id="ss"></h3>
+            <h3 id="em"></h3>
+            <h3 id="ph"></h3>
+            <h3 id="pa"></h3>
+            <h3 id="pa1"></h3>
+            <h3 id="cc"></h3>
+            <h3></h3>
+        </div>
+        @if(errors.length>0)
+        @each(error in errors) 
+                <ul class="lisgroup">  
+                <li class="list-group-item text-danger">{{error}} </li>
+                </ul>  
+        @endeach
+        @endif
+        <div id="c">
+        <form  method="POST" onsubmit="return validation()" action="/store/user">
+        <!--for customer Or owner-->
+        <div id="a">
+        <select name="selectedType" id="select" v-model="selectedType">
+                <option value="HOTEL_OWNER">Hotel owner</option>
+                <option value="CUSTOMER">Customer</option>
+                </select><br><br>
+       
+        <!--for user inputs-->
+            <input type="text" placeholder="Customer Or Owner" class="registration_form" id="username" name="username" required><br><br>
+            <input type="text" placeholder="First name" class="registration_form" id="Fullname" name="name" required><br><br>
+            <input type="text" placeholder="SSN" class="registration_form"  id="ssn" name="ssn" required><br><br>
+            <input type="text" placeholder="Email" class="registration_form"  id="email" name="email" required><br><br>
+            <input type="text" placeholder="Phone number" class="registration_form"  id="phone" name="telephone" required><br><br>
+            <input type="password" placeholder="Password" class="registration_form"  id="password" name="password" required><br><br>
+            <input type="text" placeholder="xxxx-xxxx-xxxx-xxxx" class="registration_form"  id="credit" name="credit" required><br><br>
+            <input type="text" placeholder="Hotel name" style="display: none;" class="registration_form" id="hotel" ><br>
+            <input type="submit" value="Sign Up" id="button"><br><br>
+            <p style="position:relative; margin-left:90px">are you a member?<br><a href="/">sign in</a> </p>
+        </div>    
+        </form>
+    </div>
+        </div>
+         <!--for Error entering-->
+         
+    <script >
+    document.getElementById("Error").style.display="none";
+document.getElementById("button").addEventListener("click",validation);
+
+
+function validation(){
+    var check = 0;
+    //user input
+    var Fullname =  document.getElementById("Fullname").value;
+    var username =  document.getElementById("username").value;
+    var password =  document.getElementById("password").value;
+    var ssn =       document.getElementById("ssn").value;
+    var email =     document.getElementById("email").value;
+    var phone =     document.getElementById("phone").value;
+    var credit =    document.getElementById("credit").value; 
+    //Regex for user input
+    const name = /^[a-zA-Z]+[a-zA-Z]*$/;
+    const user_name = /^[a-zA-Z]+[a-zA-Z0-9]*$/;
+    const email_check=/^[a-zA-Z0-9]+(@hotmail.com)$|^[a-zA-Z0-9]+(@gmail.com)$|^[a-zA-Z0-9]+(@yahoo.com)$/;
+    const pass_check=/^[a-zA-Z0-9]{8,}$/;
+    const phone_check=/^[0-9]{11}$/;
+    const check_ssn =/^[0-9]{5,}$/;
+    const credit_check = /^[0-9]{4}(-)[0-9]{4}(-)[0-9]{4}(-)[0-9]{4}$/;
+    //check validation of input
+    if(!name.test(Fullname)){
+        document.getElementById("fn").innerHTML="-Invalid First name";
+         check++;
+    }else document.getElementById("fn").innerHTML="";
+
+   if (! user_name.test(username)){
+    document.getElementById("cs").innerHTML="-Invalid User name";
+    check++;
+   }else document.getElementById("cs").innerHTML="";
+
+   if (! pass_check.test(password)){
+    document.getElementById("pa").innerHTML="-Invalid password";
+    check++;
+   }else document.getElementById("pa").innerHTML="";
+
+if (! check_ssn.test(ssn)){
+    document.getElementById("ss").innerHTML="-Invalid SSN User";
+    check++;
+   }else document.getElementById("ss").innerHTML="";
+
+
+   if(!phone_check.test(phone)){
+    document.getElementById("ph").innerHTML="-Invalid phone number";
+    check++;
+   }else document.getElementById("ph").innerHTML="";
+   
+   if(!credit_check.test(credit)){
+    document.getElementById("cc").innerHTML="-Invalid credit card";
+    check++;
+   }else document.getElementById("cc").innerHTML="";
+
+   if(!email_check.test(email)){
+    document.getElementById("em").innerHTML="-Invalid Email";
+    check++;
+   }else document.getElementById("em").innerHTML="";
+    
+    
+    if(check>0){
+      document.getElementById("Error").style.display="block";
+   console.log("false"+check);
+    return false;
+   }
+   else {console.log("true"); document.getElementById("Error").style.display="none"; return true;}
+}
+    </script>
+</body>
+</html>
